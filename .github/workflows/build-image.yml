@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: Build ${{ github.sha }}
     uses: playstructure/workflows/.github/workflows/docker_build_publish.yml@main
     secrets:
       azure_client_id: ${{ secrets.AZURE_CLIENT_ID }}
