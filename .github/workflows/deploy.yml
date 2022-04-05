@@ -14,7 +14,6 @@ jobs:
     with:
       cluster_resource_group: zarenner-stamp1
       cluster_name: zarenner-stamp1-cluster
-      image_tag: ${{ github.SHA }}
       deploy_environment: production
     secrets:
       azure_client_id: ${{ secrets.AZURE_CLIENT_ID }}
