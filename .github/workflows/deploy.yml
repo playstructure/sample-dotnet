@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: playstructure/workflows/.github/workflows/deploy.yml@main
+    with:
+      cluster_resource_group: zarenner-stamp1
+      cluster_name: zarenner-stamp1-cluster
+      image_name: sample-dotnet
+      image_tag: ${{ env.GITHUB_SHA }}
+      deploy_environment: production
+    secrets:
+      azure_client_id: ${{ secrets.AZURE_CLIENT_ID }}
+      azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+      azure_subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      azure_registry: ${{ secrets.AZURE_REGISTRY }}
