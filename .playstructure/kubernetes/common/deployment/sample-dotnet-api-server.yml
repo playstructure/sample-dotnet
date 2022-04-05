@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: sample-dotnet-api-server
+spec:
+  selector:
+    matchLabels:
+      app: sample-dotnet
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-dotnet
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: sample-dotnet
+        image: sample-dotnet # Image registry and tag populated during deploy config build
+        resources:
+          requests:
+            cpu: "0"
+            memory: "32Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+        readinessProbe:
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          httpGet:
+            path: /weatherforecast
+            port: 80
