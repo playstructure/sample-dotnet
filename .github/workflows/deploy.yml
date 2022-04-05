@@ -9,7 +9,6 @@ jobs:
     with:
       cluster_resource_group: zarenner-stamp1
       cluster_name: zarenner-stamp1-cluster
-      image_name: sample-dotnet
       image_tag: ${{ github.SHA }}
       deploy_environment: production
     secrets:
